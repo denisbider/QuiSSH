@@ -1,47 +1,28 @@
 [package]
-name = "quiche"
+name = "QuiSSH"
 version = "0.4.0"
-authors = ["Alessandro Ghedini <alessandro@ghedini.me>"]
-edition = "2018"
+edition = "2020"
 build = "src/build.rs"
-description = "🥧 Savoury implementation of the QUIC transport protocol and HTTP/3"
-repository = "https://github.com/cloudflare/quiche"
+description = "Adaptation of cloudflare/quiche: removes TLS handshake and HTTP/3; implements direct insertion of key material from SSH; enables SSH over QUIC"
+repository = "https://github.com/denisbider/QuiSSH"
 readme = "README.md"
-keywords = ["quic", "http3"]
+keywords = ["ssh", "quic"]
 categories = ["network-programming"]
 license = "BSD-2-Clause"
 include = [
      "/*.md",
      "/*.toml",
-     "/CODEOWNERS",
      "/COPYING",
      "/benches",
-     "/deps/boringssl/**/*.[chS]",
-     "/deps/boringssl/**/*.cc",
-     "/deps/boringssl/**/*.errordata",
-     "/deps/boringssl/**/*.go",
-     "/deps/boringssl/**/*.pl",
-     "/deps/boringssl/**/CMakeLists.txt",
-     "/deps/boringssl/*.md",
-     "/deps/boringssl/LICENSE",
-     "/deps/boringssl/sources.cmake",
      "/examples",
      "/include",
-     "/quiche.svg",
      "/src",
 ]
 
 [features]
-default = ["boringssl-vendored"]
 
-# Build vendored BoringSSL library.
-boringssl-vendored = []
-
-# Generate pkg-config metadata file for libquiche.
+# Generate pkg-config metadata file
 pkg-config-meta = []
-
-# Equivalent to "--cfg fuzzing", but can also be checked in build.rs.
-fuzzing = []
 
 # For building with Android NDK < 18 and GCC.
 ndk-old-gcc = []
